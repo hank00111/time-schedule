@@ -7,15 +7,23 @@ import tseslint from "typescript-eslint";
 export default tseslint.config(
 	{ ignores: ["dist"] },
 	{
-		extends: [js.configs.recommended, ...tseslint.configs.recommended],
+		extends: [
+			js.configs.recommended,
+			...tseslint.configs.recommendedTypeChecked,
+		],
 		files: ["**/*.{ts,tsx}"],
 		languageOptions: {
 			ecmaVersion: 2020,
 			globals: globals.browser,
+			parserOptions: {
+				project: ["./tsconfig.node.json", "./tsconfig.app.json"],
+				tsconfigRootDir: import.meta.dirname,
+			},
 		},
 		plugins: {
 			"react-hooks": reactHooks,
 			"react-refresh": reactRefresh,
+			React,
 		},
 		rules: {
 			...reactHooks.configs.recommended.rules,
@@ -23,6 +31,8 @@ export default tseslint.config(
 				"warn",
 				{ allowConstantExport: true },
 			],
+			...React.configs.recommended.rules,
+			...React.configs["jsx-runtime"].rules,
 		},
-	},
+	}
 );
