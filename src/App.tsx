@@ -9,12 +9,8 @@ function App() {
 	return (
 		<>
 			<div>
-				<a href="" target="_blank" rel="noreferrer">
-					<img src={viteLogo} className="logo" alt="Vite logo" />
-				</a>
-				<a href="" target="_blank" rel="noreferrer">
-					<img src={reactLogo} className="logo react" alt="React logo" />
-				</a>
+				<img src={viteLogo} className="logo" alt="Vite logo" />
+				<img src={reactLogo} className="logo react" alt="React logo" />
 			</div>
 			<h1>Vite + React</h1>
 			<div className="card">
